@@ -37,9 +37,18 @@ function searchMeal(e) {
 }
 
 function getMealByID(mealID) {
+  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`)
+    .then(res => res.json())
+    .then(data => {
+      const meal = data.meals[0];
 
+      addMealToDom(meal)
+    })
 }
 
+function addMealToDom(meal) {
+
+}
 
 function selectMealID(e) {
   const mealInfo = e.path.find(meal => {
