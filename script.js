@@ -87,5 +87,19 @@ function selectMealID(e) {
   }
 }
 
-mealsEl.addEventListener('click', selectMealID)
-submitBtn.addEventListener('click', searchMeal)
+function randomMealSearch() {
+  mealsEl.innerHTML = '';
+  resultHeading.innerHTML = ''
+
+  fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+    .then(res => res.json())
+    .then(data => {
+      const meal = data.meals[0];
+
+      addMealToDom(meal)
+    })
+}
+
+mealsEl.addEventListener('click', selectMealID);
+submitBtn.addEventListener('click', searchMeal);
+randomBtn.addEventListener('click', randomMealSearch);
