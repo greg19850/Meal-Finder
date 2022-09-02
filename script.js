@@ -41,7 +41,7 @@ function getMealByID(mealID) {
 }
 
 
-function selectMeal(e) {
+function selectMealID(e) {
   const mealInfo = e.path.find(meal => {
     if (meal.classList) {
       return meal.classList.contains('meal-info')
@@ -54,5 +54,5 @@ function selectMeal(e) {
   }
 }
 
-mealsEl.addEventListener('click', selectMeal)
+mealsEl.addEventListener('click', selectMealID)
 submitBtn.addEventListener('click', searchMeal)
