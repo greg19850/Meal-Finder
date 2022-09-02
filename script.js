@@ -16,8 +16,6 @@ function searchMeal(e) {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-
         if (data.meals === null) {
           resultHeading.innerHTML = `<p> There are no results for '${mealName}'. Try again!`;
         } else {
@@ -38,5 +36,23 @@ function searchMeal(e) {
   } else alert('Please enter meal name!')
 }
 
+function getMealByID(mealID) {
 
+}
+
+
+function selectMeal(e) {
+  const mealInfo = e.path.find(meal => {
+    if (meal.classList) {
+      return meal.classList.contains('meal-info')
+    } else return
+  })
+
+  if (mealInfo) {
+    const mealID = mealInfo.getAttribute('data-mealID')
+    getMealByID(mealID)
+  }
+}
+
+mealsEl.addEventListener('click', selectMeal)
 submitBtn.addEventListener('click', searchMeal)
